@@ -73,7 +73,7 @@ Before running the script, you need to ensure you have Python installed on your 
 ```
 pip install -r requirements.txt
 ```
-Note that you can run add your OpenAI API Key into the `config.py` file, for authenticating requests. You can also set it as an environment variable for security purposes.
+You can create an OpenAI API key here: https://platform.openai.com/. Note that you can run add your OpenAI API Key into the `config.py` file, for authenticating requests. You can also set it as an environment variable for security purposes.
 
 ## Dependencies
 
