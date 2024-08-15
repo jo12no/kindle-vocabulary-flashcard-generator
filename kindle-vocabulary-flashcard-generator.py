@@ -77,7 +77,7 @@ def write_to_csv(data):
     print(f"Saved output {data[0]}: {OUTPUT_FILE_PATH}")
 
 
-def format_input_results(input_data):
+def format_kindle_results(input_data):
     """
     Formats the extracted input data into a usable format.
 
@@ -109,7 +109,7 @@ def main():
         4. Writes results to a CSV file.
 
     Returns:
-        None: The final operation status is printed to the console.
+        True: Upon successful completion final operation status is printed to the console.
     """
     input_source = get_user_input().name
 
@@ -124,7 +124,7 @@ def main():
         try:
             if input_source == "KINDLE_DB":  # kindle returns word + usage
                 response = fetcher.fetch_gpt_response(input[0])
-                word, usage = format_input_results(input)
+                word, usage = format_kindle_results(input)
                 output = [word, f"{response}{usage}"]
             elif input_source == "TXT_FILE":  # would just be word
                 response = fetcher.fetch_gpt_response(input)
@@ -136,6 +136,8 @@ def main():
             print("Skipping...")
 
     print("Completed")
+
+    return True
 
 
 main()
