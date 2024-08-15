@@ -12,19 +12,16 @@ class Kindle:
         Attempt to connect to the given SQLite database file.
 
         Raises:
-            SystemExit: If the SQLite database file does not exist at the specified path.
+            FileNotFoundError: If the SQLite database file does not exist at the specified path.
         """
         if not os.path.exists(DB_FILE_PATH):
-            print(f"Required Kindle DB file not found at location: {DB_FILE_PATH}")
-            sys.exit(0)
+            raise FileNotFoundError(f"Required Kindle DB file not found at location: {DB_FILE_PATH}")
 
         try:
             self.conn = sqlite3.connect(DB_FILE_PATH)
             print("Connection successful.")
         except sqlite3.Error as e:
-            print(f"Error connecting to database: {e}")
-            print(f"Location: {DB_FILE_PATH}")
-            sys.exit(0)
+            raise sqlite3.Error(f"Error connecting to database: {e}. Location: {DB_FILE_PATH}")
 
     def init_cursor(self):
         """

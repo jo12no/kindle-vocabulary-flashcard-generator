@@ -35,14 +35,13 @@ def extract_txt():
     Extracts words from a text file.
 
     Raises:
-        SystemExit: If the text file does not exist at the expected path.
+        FileNotFoundError: If the text file does not exist at the expected path.
 
     Returns:
         list: A list of words stripped of leading and trailing whitespace.
     """
     if not os.path.exists(TXT_FILE_PATH):
-        print(f"Required text files with words not found at location: {TXT_FILE_PATH}")
-        sys.exit(0)
+        raise FileNotFoundError(f"Required text file with words not found at location: {TXT_FILE_PATH}")
 
     with open(TXT_FILE_PATH, "r") as f:
         results = [line.strip() for line in f.readlines()]
@@ -74,7 +73,7 @@ def write_to_csv(data):
     with open(OUTPUT_FILE_PATH, "a", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(data)
-    print(f"Saved output {data[0]}: {OUTPUT_FILE_PATH}")
+    print(f"Saved output {data[0]}")
 
 
 def format_kindle_results(input_data):
@@ -120,6 +119,7 @@ def main():
 
     fetcher = gpt_fetcher.GptFetcher()
 
+    print(f"Saving to: {OUTPUT_FILE_PATH}")
     for input in results:
         try:
             if input_source == "KINDLE_DB":  # kindle returns word + usage
