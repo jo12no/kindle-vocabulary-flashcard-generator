@@ -31,6 +31,9 @@ By integrating historical word lookups with detailed linguistic information, thi
 * Using Anki, you self-score how well you knew the answer.
 * The algorithm then determines how often to show each card to ensure maximum retention. 
 * Example card:
+  
+![back_v2](https://github.com/user-attachments/assets/dbdee676-848e-41f2-bf4e-682abe49dcd1)
+
 
 
 ## Explanation & Features
